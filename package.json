@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --env-file=.env"
+    "dev": "nodemon --env-file=.env",
+    "seed:user": "node seed/seed_user.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-jwt": "^8.5.1",
     "joi": "^17.13.3",

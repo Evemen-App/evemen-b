@@ -1,6 +1,5 @@
 import { expressjwt } from "express-jwt";
 import { UserModel } from "../models/user_model.js";
-import { sendResetEmail } from "../utilities/mail.js";
 
 export const isAuthenticated = expressjwt({
     secret: process.env.JWT_SECRET_KEY,
@@ -18,4 +17,4 @@ export const isAuthorized = (roles) => {
             res.status(403).json('you are not authorized!')
         }
     }
-}
+};

@@ -12,4 +12,4 @@ app.use(userRouter);
 
 app.listen(3030, () => {
     console.log("server is active")
-})
+});
