@@ -28,7 +28,7 @@ const seedUser = async () => {
 
     // Check if user already exists
     const existingUser = await UserModel.findOne({
-      $or: [{ username: "oheneba" }, { email: "ohenebaopareok@gmail.com" }],
+      $or: [{ username: process.env.SEED_NAME }, { email: process.env.EMAIL_SEED }],
     });
 
     if (existingUser) {
@@ -37,20 +37,20 @@ const seedUser = async () => {
     }
 
     // Hash the password
-    const password = "jesuschrist";
+    const password = process.env.EMAIL_SEEDPASSWORD
     const hashPassword = bcrypt.hashSync(password, 10);
 
     // Create new user
     const newUser = await UserModel.create({
-      username: "oheneba",
-      email: "ohenebaopareok@gmail.com",
+      username: process.env.SEED_NAME,
+      email: process.env.EMAIL_SEED,
       password: hashPassword,
       role: "admin",
     });
 
     // Send registration email to user
     await mailTransporter.sendMail({
-      from: process.env.SENDER_EMAIL || "keskot87@gmail.com",
+      from: process.env.EMAIL_USER,
       to: newUser.email,
       subject: "Get Started!",
       html: registerUserMailTemplate.replace("{{username}}", newUser.username),
