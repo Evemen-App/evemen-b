@@ -10,8 +10,8 @@ const userSchema = new Schema({
     resetPasswordExpires: { type: Date },
 },{
     timestamps: true 
-})
+});
 
-userSchema.plugin(normalize)
+userSchema.plugin(normalize);
 
-export const UserModel = model("User", userSchema)
+export const UserModel = model("User", userSchema);

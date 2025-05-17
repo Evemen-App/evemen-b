@@ -17,3 +17,14 @@ export const updateUserValidator = Joi.object({
     role: Joi.string().valid("guest", "admin")
     .required(),
 });
+
+export const forgotPasswordValidator = Joi.object({
+    email: Joi.string().required(),
+  });
+  
+export const resetPasswordValidator = Joi.object({
+    token: Joi.string().required(),
+    newPassword: Joi.string().required(),
+    confirmPassword: Joi.string().required().valid(Joi.ref('newPassword')).messages({
+        'any.only': '"confirmPassword" must match newPassword',}),
+    });
